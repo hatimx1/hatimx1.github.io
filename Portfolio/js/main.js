@@ -1,5 +1,5 @@
 /* settings box */
-const seticon = document.querySelector(".setting_icon i");
+const seticon = document.querySelector(".gear-icon i");
 const setbox = document.querySelector(".settings");
 
 seticon.addEventListener("click", (e) => {
@@ -37,3 +37,44 @@ if (localColor !== null) {
         };
     });
 };
+
+/* random background */
+const optionE = document.querySelectorAll(".rd-bg li");
+const bgImgs = ["1.jpg", "2.jpg", "3.jpg"];
+const home = document.querySelector(".home");
+let bgInt;
+
+function rdBg() {
+    bgInt = setInterval(() => {
+        const rdNum = Math.floor(Math.random() * bgImgs.length);
+        home.style.backgroundImage = "url('img/home/" + bgImgs[rdNum] + "')";
+    }, 10000);
+};
+rdBg();
+
+optionE.forEach((li) => {
+    li.addEventListener("click", (e) => {
+        optionE.forEach(eLi => {eLi.classList.remove("active")});
+        e.target.classList.toggle("active");
+        const eOption = e.target.dataset.option;
+        if (eOption === "yes") {
+            rdBg();
+        } else {
+            clearInterval(bgInt)
+        };
+        localStorage.setItem("bgOption", eOption);
+    });
+});
+
+const localOption = localStorage.getItem("bgOption");
+
+if (localOption === "yes") {
+    rdBg();
+    optionE[0].classList.add("active");
+    optionE[1].classList.remove("active");
+} else if (localOption === "no") {
+    clearInterval(bgInt);
+    optionE[1].classList.add("active");
+    optionE[0].classList.remove("active");
+};
+
