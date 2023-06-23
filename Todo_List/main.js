@@ -44,6 +44,7 @@ add.style.cssText = `
     border: 0;
     color: white;
     margin-left: 5px;
+    cursor: pointer;
 `;
 
 function addTaskToHtml(localTask, taskName) {
@@ -73,6 +74,7 @@ function addTaskToHtml(localTask, taskName) {
         background-color: rgb(175 42 42);
         font-weight: bold;
         color: white;
+        cursor: pointer;
     `;
     
     p.style.cssText = `
