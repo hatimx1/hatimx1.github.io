@@ -7,14 +7,16 @@ const icon = document.querySelectorAll(".icon");
 let p = document.querySelectorAll("p");
 
 document.body.style.cssText = `
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgb(8, 8, 8);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 `;
 
 container.style.cssText = `
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px);
-    margin-top: 50px;
+    padding: 55px 20px;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -23,22 +25,25 @@ container.style.cssText = `
 forme.style.cssText = `
     width: 100%;
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 `;
 
 input.style.cssText = `
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, .1);
     border: 2px solid #565656;
-    padding: 6px;
+    padding: 12px;
     color: white;
-    width: calc(100% - 95px);
+    flex-grow: 1;
 `;
 
 add.style.cssText = `
-    padding: 8px;
-    background-color: rgba(86, 86, 86, 0.3);
+    padding: 15px;
+    background-color: rgb(42, 114, 175);
     border: 0;
     color: white;
-    font-weight: bold;
+    margin-left: 5px;
 `;
 
 function addTaskToHtml(localTask, taskName) {
@@ -49,10 +54,9 @@ function addTaskToHtml(localTask, taskName) {
     let text1 = document.createTextNode(`${localTask}`);
     let icon = document.createElement("div");
     icon.classList.add("icon", `${taskName}`);
-    let text2 = document.createTextNode(`X`);
+    icon.innerHTML = `<i class="fa-sharp fa-solid fa-trash"></i>`;
 
     p.appendChild(text1);
-    icon.appendChild(text2);
     div.appendChild(p);
     div.appendChild(icon);
     
@@ -65,8 +69,8 @@ function addTaskToHtml(localTask, taskName) {
     `;
     
     icon.style.cssText = `
-        padding: 10px;
-        background-color: rgb(42 114 175);
+        padding: 16px;
+        background-color: rgb(175 42 42);
         font-weight: bold;
         color: white;
     `;
@@ -75,7 +79,7 @@ function addTaskToHtml(localTask, taskName) {
         color: white;
         font-weight: bold;
         background-color: rgba(86, 86, 86, 0.3);
-        padding: 10px;
+        padding: 16px;
         margin: 0;
         width: 100%;
     `;
